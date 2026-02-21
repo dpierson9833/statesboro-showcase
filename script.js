@@ -19,7 +19,7 @@ navLinks.querySelectorAll('a').forEach(link => {
 });
 
 // Scroll-triggered fade-in animations
-const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -29,14 +29,14 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Apply fade-in to section content
-document.querySelectorAll('.card, .stat, .culture-item, .nature-card, .about-text, .visit-info, .map-placeholder').forEach(el => {
+// Apply fade-in to content elements
+document.querySelectorAll('.program-card, .benefit, .testimonial, .location-card, .about-text, .lineage-card, .org-card, .cta-block, .stat-item').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
 });
 
-// Stagger card animations
-document.querySelectorAll('.card-grid, .about-stats, .culture-grid, .nature-grid').forEach(grid => {
+// Stagger animations within grids
+document.querySelectorAll('.programs-grid, .benefits-grid, .testimonials-grid, .locations-grid, .stats-grid').forEach(grid => {
     grid.querySelectorAll('.fade-in').forEach((el, i) => {
         el.style.transitionDelay = `${i * 0.1}s`;
     });
